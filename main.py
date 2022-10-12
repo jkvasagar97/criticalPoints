@@ -1,7 +1,7 @@
 import utils.polynomial as pl
 from utils.critpoints import CritPoints as crit
 import matplotlib.pyplot as plt
-from utils.arrangepoints import ArrangePoints
+from utils.nearestpoint import NearestPoint
 
 def seprate_xy(points):
     xs = [x[0] for x in points]
@@ -11,6 +11,7 @@ def seprate_xy(points):
 if __name__ == '__main__':
     poly_curve = pl.Polynomial([1,-2,100])
     points = poly_curve.sample(-20,20,100)
+    #NearestPoint.arrange_points(points)
     crit_points = crit.get_crit_points(points,2,0.0001)
     print(len(points))
     print(len(crit_points))
