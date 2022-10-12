@@ -17,28 +17,27 @@ class CritPoints:
         return np.linalg.norm(np.cross(p2-p1, p1-p3))/np.linalg.norm(p2-p1)
     
     @staticmethod
-    def get_crit_points(x,y, step, cutoff):
+    def get_crit_points(points, step, cutoff):
         # For every point we need to 
             #find the number in the next progression
             #find the distance of every point to the line connection it 
             #select that point and back to one
             
-        crit_x = [x[0]]
-        crit_y = [y[0]]
+        crit_points = [points[0]]
         index = 0
-        while(index <= len(x)):
+        print(len(points))
+        while(index < len(points)):
             next_index = index+step
-            if next_index > len(x) - 1:
+            if next_index >= len(points) :
                 break
-            for i in range(index, next_index+1):
-                distance = CritPoints.get_distance( [x[index],y[index]], [x[next_index],y[next_index]], [x[i],y[i]])
+            for i in range(index, next_index):
+                distance = CritPoints.get_distance( points[index], points[next_index], points[i])
+                print(index, next_index, i)
                 if cutoff < distance :
-                    crit_x.append((x[i]))
-                    crit_y.append(y[i])
+                    crit_points.append(points[i])
                     index = i
                     break
             index = next_index
-        crit_x.append(x[-1])
-        crit_y.append(y[-1])
-        return crit_x, crit_y
+        crit_points.append(points[-1])
+        return crit_points
     

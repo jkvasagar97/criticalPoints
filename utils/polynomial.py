@@ -1,8 +1,7 @@
 class Polynomial:
     def __init__(self, poly ):
         self.poly = []
-        self.x = []
-        self.y = []
+        self.points = []
         self.poly = poly
         self.length = len(self.poly)
             
@@ -22,8 +21,7 @@ class Polynomial:
         if start >= end:
             exit(-1)
         interval = (end - start)/ number
-        while start <= end:
-            self.x.append(start)
-            self.y.append(self.find_val(start))
+        while start < end:
+            self.points.append([start, self.find_val(start)])
             start += interval
-        return self.x, self.y
+        return self.points
