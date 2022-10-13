@@ -14,7 +14,7 @@ class CritPoints:
         p1 = np.asarray(p1)
         p2 = np.asarray(p2)
         p3 = np.asarray(p3)
-        return np.linalg.norm(np.cross(p2-p1, p1-p3))/np.linalg.norm(p2-p1)
+        return np.abs(np.linalg.norm(np.cross(p2-p1, p1-p3))/np.linalg.norm(p2-p1))
     
     @staticmethod
     def get_crit_points(points, step, cutoff):
@@ -38,6 +38,5 @@ class CritPoints:
                     index = i
                     break
             index = next_index
-        crit_points.append(points[-1])
         return crit_points
     
