@@ -9,10 +9,10 @@ def seprate_xy(points):
     return xs, ys
 
 if __name__ == '__main__':
-    poly_curve = pl.Polynomial([1,-2,100])
-    points = poly_curve.sample(-20,20,100)
-    #NearestPoint.arrange_points(points)
-    crit_points = crit.get_crit_points(points,2,0.0001)
+    poly_curve = pl.Polynomial([1,0,-100])
+    points = poly_curve.sample(-20,20,50)
+    points = NearestPoint.arrange_points(points)
+    crit_points = crit.get_crit_points(points,2,0.001)
     print(len(points))
     print(len(crit_points))
     xs, ys = seprate_xy(points)
