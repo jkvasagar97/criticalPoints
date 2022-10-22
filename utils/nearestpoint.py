@@ -1,5 +1,5 @@
 from array import array
-
+import math
 
 class NearestPoint:
     @staticmethod
@@ -18,6 +18,10 @@ class NearestPoint:
         return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
     @staticmethod
+    def eqi_distance(p1,p2):
+        return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)
+
+    @staticmethod
     def nearest_point(center, points):
         '''
         For every point we will check if it is in the near proximity of center
@@ -26,7 +30,7 @@ class NearestPoint:
         while(True):
             for i, point in enumerate(points):
                 if not NearestPoint.is_same_points(center,point):
-                    if NearestPoint.is_in_proximity(center, point, distance, NearestPoint.manhattan_distance):
+                    if NearestPoint.is_in_proximity(center, point, distance, NearestPoint.eqi_distance):
                         return i
             distance += 1
                     
