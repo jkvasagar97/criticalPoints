@@ -25,14 +25,12 @@ class CritPoints:
             
         crit_points = [points[0]]
         index = 0
-        print(len(points))
         while(index < len(points)):
             next_index = index+step
             if next_index >= len(points) :
                 break
             for i in range(index, next_index):
                 distance = CritPoints.get_distance( points[index], points[next_index], points[i])
-                print(index, next_index, i)
                 if cutoff < distance :
                     crit_points.append(points[i])
                     index = i
