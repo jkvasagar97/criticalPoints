@@ -36,6 +36,5 @@ class CritPoints:
                     index = i
                     break
             index = next_index
-        crit_points.append(points[-1])
         return crit_points
     
