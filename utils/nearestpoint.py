@@ -1,6 +1,4 @@
-from array import array
 import math
-from tkinter import NE
 
 class NearestPoint:
     @staticmethod
@@ -28,16 +26,15 @@ class NearestPoint:
         '''
         For every point we will check if it is in the near proximity of center
         '''
-        min_distance = float('inf')
-        for i, point in enumerate(points):
-            if NearestPoint.is_same_points(point, center):
-                continue
-            if min_distance > NearestPoint.eqi_distance(point, center):
-                min_distance = NearestPoint.eqi_distance(point, center)
-                next_point = point.copy()
-                print(min_distance)
-        return next_point 
-
+        neighbour_distance = 1
+        while(True):
+            for point in points:
+                if NearestPoint.is_same_points(center, point):
+                    continue
+                if NearestPoint.is_in_proximity(center, point, neighbour_distance):
+                    return point
+            neighbour_distance = neighbour_distance + 1
+            
     @staticmethod 
     def find_referance_point (points):
         """

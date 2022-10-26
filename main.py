@@ -5,10 +5,10 @@ from utils.nearestpoint import NearestPoint
 
 
 if __name__ == '__main__':
-    poly_curve = pl.Polynomial([4,0,-0])
-    points = poly_curve.sample(-2,2,50)
+    poly_curve = pl.Polynomial([1,0,-7,6])
+    points = poly_curve.sample(-4,4,100)
     points = NearestPoint.arrange_points(points)
-    crit_points = crit.get_crit_points(points,2,0.001)
+    crit_points = crit.get_crit_points(points,2,0.0001)
     print(len(points))
     print(len(crit_points))
     xs, ys = NearestPoint.seprate_xy(points)
