@@ -21,7 +21,8 @@ class CritPoints:
         # For every point we need to 
             #find the number in the next progression
             #find the distance of every point to the line connection it 
-            #select that point and back to one
+            #select that point where the distance is grater than cutoff lenght
+            #and back to one
             
         crit_points = [points[0]]
         index = 0

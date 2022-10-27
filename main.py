@@ -7,12 +7,19 @@ import numpy as np
 
 if __name__ == '__main__':
 
-#    poly_curve = pl.Polynomial([1,0,-7,6])
-#    points = poly_curve.sample(-4,4,100)
     points = np.genfromtxt('ellipse.csv', delimiter=',', dtype=None)
+
+    #shuffling the arraged point in random
+    np.random.shuffle(points)
+
     points = points.tolist()
+
+    #arrangin the points using nearest neighbour 
     points = NearestPoint.arrange_points(points)
+
+    #finding the critical points using peasewise linearization
     crit_points = crit.get_crit_points(points,10,0.0001)
+    
     print(len(points))
     print(len(crit_points))
     
