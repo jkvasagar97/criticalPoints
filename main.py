@@ -7,7 +7,7 @@ import numpy as np
 
 if __name__ == '__main__':
 
-    points = np.genfromtxt('ellipse.csv', delimiter=',', dtype=None)
+    points = np.genfromtxt('data/ellipse.csv', delimiter=',', dtype=None)
 
     #shuffling the arraged point in random
     np.random.shuffle(points)
@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     #finding the critical points using peasewise linearization
     crit_points = crit.get_crit_points(points,10,0.0001)
-    
+
     print(len(points))
     print(len(crit_points))
     
