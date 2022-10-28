@@ -26,14 +26,14 @@ class NearestPoint:
         '''
         For every point we will check if it is in the near proximity of center
         '''
-        neighbour_distance = 0.0001
+        neighbour_distance = 0.001
         while(True):
             for point in points:
                 if NearestPoint.is_same_points(center, point):
                     continue
                 if NearestPoint.is_in_proximity(center, point, neighbour_distance):
                     return point
-            neighbour_distance = neighbour_distance + 0.0001
+            neighbour_distance = neighbour_distance + 0.001
 
     @staticmethod 
     def find_referance_point (points):
