@@ -1,11 +1,6 @@
 import numpy as np
-import math
 
 class CritPoints:
-    @staticmethod
-    def get_distance(x,y): #probably won't need this
-        '''returns the distance between two points'''
-        return math.dist(x,y)
 
     @staticmethod
     def get_distance(p1,p2,p3):
@@ -37,5 +32,6 @@ class CritPoints:
                     index = i
                     break
             index = next_index
+        crit_points.append(points[-1])    
         return crit_points
     
