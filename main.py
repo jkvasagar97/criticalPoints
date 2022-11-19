@@ -1,7 +1,8 @@
-from PIL import Image, ImageOps
+from utils.noise import add_noise
 from utils.critpoints import CritPoints as crit
-import matplotlib.pyplot as plt
 from utils.nearestpoint import arrange_points
+from PIL import Image, ImageOps
+import matplotlib.pyplot as plt
 import numpy as np
 import time
 import numpy as np
@@ -45,21 +46,17 @@ if __name__ == '__main__':
     #finding the critical points using peasewise linearization
     mother_shape = crit.get_crit_points(arranged_points,4,0.4)
     end = time.time()
+    mother_shape = np.array(mother_shape)
 
     print("Crit points :", (end-start) * 10**3, "ms")
     print("Length of crit points", len(mother_shape))
     
-    #Generating variations of mother shaape
-    
+    #Adding noise to mother shaape
+    variations = add_noise(mother_shape, 50)
 
-    #ploting both the curves
-    xs = [x[0] for x in mother_shape]
-    ys = [x[1] for x in mother_shape]
-
-    x1 = [x[0] for x in arranged_points]
-    y1 = [x[1] for x in arranged_points]
-
-    plt.plot(x1,y1)
-    plt.plot(xs,ys)
+    for variation in variations:
+        xs = [x[0] for x in variation]
+        ys = [x[1] for x in variation]
+        plt.plot(xs,ys)
 
     plt.show()
