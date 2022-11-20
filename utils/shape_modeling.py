@@ -4,11 +4,7 @@ def rand_float_range(start, end):
     return np.random.random() * (end - start) + start
 
 def get_mean_shape(variations):
-    mean = np.zeros(variations.shape[1])
-    for variation in variations:
-        mean = np.add(mean, variation)
-
-    return mean/variations.shape[0]
+    return variations.sum(axis=1)/variations.shape[1]
 
 def get_cutoff_vector_and_val(eig_val, eig_vector, cuttoff):
     total = np.sum(eig_val)

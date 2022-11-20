@@ -1,7 +1,7 @@
 from utils.critpoints import CritPoints as crit
 from utils.noise import add_noise
 from utils.nearestpoint import arrange_points
-from utils.shape_modeling import get_cutoff_vector_and_val, get_random_scale_vals
+from utils.shape_modeling import get_cutoff_vector_and_val, get_random_scale_vals, get_mean_shape
 from PIL import Image, ImageOps
 import matplotlib.pyplot as plt
 import numpy as np
@@ -59,6 +59,9 @@ if __name__ == '__main__':
     variations = add_noise(mother_shape, 50)
     variations = np.transpose(variations)
 
+    #Generating Mean shape
+    mother_shape = get_mean_shape(variations)
+
     #finding covariance matrix
     cov_matrix = np.cov(variations)
 
@@ -86,6 +89,9 @@ if __name__ == '__main__':
     for index, x in enumerate(random_shapes):
         if index == 0:
             axis[0, 0].set_title("Mean Shape")
+        else:
+            axis[int(index/3), index%3].set_title("Generated Shape {}".format(index))
         axis[int(index/3), index%3].plot(x[:no_of_points], x[no_of_points:])
+        axis[int(index/3), index%3].axis('off')
     
     plt.show()
